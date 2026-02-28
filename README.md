@@ -1,6 +1,6 @@
 # Ghostty — Delightful Theme
 
-Color themes for Ghostty, derived from the Delightful Design System.
+Color themes and personal config for Ghostty, derived from the Delightful Design System.
 
 ## Contents
 
@@ -8,7 +8,11 @@ Color themes for Ghostty, derived from the Delightful Design System.
 themes/
   delightful-light    Color-only theme (installable via Ghostty's theme system)
   delightful-dark     Color-only dark variant
+config                Personal config (fonts, keybinds, window — references theme)
+shaders/              Optional GLSL shaders (vignette, bloom)
 ```
+
+See also [`shell/`](../shell/) for the shared Starship prompt and zsh config.
 
 ## Install Themes
 
@@ -32,9 +36,43 @@ Or for dark mode:
 theme = delightful-dark
 ```
 
+## Install Full Config (optional)
+
+If you want the complete Delightful experience (fonts, keybinds, shaders):
+
+```bash
+# macOS
+cp config ~/Library/Application\ Support/com.mitchellh.ghostty/config
+
+# Linux
+cp config ~/.config/ghostty/config
+```
+
+Or use the setup script which handles Ghostty + Starship + zsh:
+
+```bash
+bash scripts/setup-terminal.sh
+```
+
+## Shaders (optional)
+
+Copy the shader files and uncomment the `custom-shader` lines in your config:
+
+```bash
+# macOS
+cp shaders/*.glsl ~/Library/Application\ Support/com.mitchellh.ghostty/shaders/
+
+# Linux
+cp shaders/*.glsl ~/.config/ghostty/shaders/
+```
+
 ## Claude Code
 
 After applying the theme, run `/config` in Claude Code and set the theme to **light-ansi**. This makes Claude Code inherit the Delightful palette from your terminal.
+
+## Quick Terminal
+
+`Option+Space` opens a centered floating terminal from anywhere on macOS. The session persists between toggles — open it, type `cc` to start Claude Code, then toggle it away.
 
 ## Token Mapping
 
