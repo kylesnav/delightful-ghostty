@@ -9,45 +9,27 @@
 <h1 align="center">Delightful for Ghostty</h1>
 
 <p align="center">
-  Warm terminal colors derived from the <a href="https://github.com/kylesnav/delightful-design-system">Delightful Design System</a>.
+  Warm, OKLCH-derived color themes for the <a href="https://ghostty.org">Ghostty</a> terminal emulator.
 </p>
 
 ---
 
-## The Delightful Terminal Stack
+## Install
 
-| Package | Role |
-|---------|------|
-| **`ghostty/`** (this package) | Terminal emulator — colors, fonts, keybinds |
-| [`starship/`](../starship/) | Prompt — rainbow powerline segments |
-| [`shell/`](../shell/) | Session — tmux status bar, persistence, zsh config |
-| [`iterm2/`](../iterm2/) | iTerm2 color profiles (standalone alternative) |
-
-## Prerequisites
-
-**Nerd Font** — the Starship prompt and tmux status bar use powerline glyphs and language icons. Ghostty's embedded JetBrains Mono handles normal text; the Nerd Font variant provides icon fallback.
-
-```sh
-brew install --cask font-jetbrains-mono-nerd-font
-```
-
-**Suppress "Last login"** — stop macOS from printing `Last login: ...` on every new terminal:
-
-```sh
-touch ~/.hushlogin
-```
-
-## Theme
-
-The color theme is portable — install it on any Ghostty setup.
-
-### Install
-
-Copy the theme files into Ghostty's theme directory:
+### Quick (curl)
 
 ```bash
 mkdir -p ~/.config/ghostty/themes
-cp themes/delightful-light themes/delightful-dark ~/.config/ghostty/themes/
+curl -fsSL https://raw.githubusercontent.com/kylesnav/delightful-ghostty/main/themes/delightful-light -o ~/.config/ghostty/themes/delightful-light
+curl -fsSL https://raw.githubusercontent.com/kylesnav/delightful-ghostty/main/themes/delightful-dark -o ~/.config/ghostty/themes/delightful-dark
+```
+
+### Manual
+
+```bash
+git clone https://github.com/kylesnav/delightful-ghostty.git
+mkdir -p ~/.config/ghostty/themes
+cp delightful-ghostty/themes/delightful-light delightful-ghostty/themes/delightful-dark ~/.config/ghostty/themes/
 ```
 
 Then set your theme in `~/.config/ghostty/config`:
@@ -58,9 +40,38 @@ theme = delightful-light
 
 Or `delightful-dark` for dark mode.
 
-### Color Mapping
+## What's Included
 
-All colors map to Delightful Design System tokens. Blue slots use the cyan hue at different lightness levels since Delightful has no dedicated blue. Bright yellow reuses normal yellow in light mode for legibility on the cream background.
+- **`themes/delightful-light`** -- Light theme with warm cream background
+- **`themes/delightful-dark`** -- Dark theme with warm charcoal background
+- **`config`** -- Opinionated Ghostty configuration (fonts, keybinds, window chrome, tmux integration)
+- **`shaders/`** -- Optional GLSL post-processing effects (vignette, bloom)
+
+### Config
+
+The included config goes beyond colors -- JetBrains Mono with OpenType features, macOS tab bar, equalized splits (`Cmd+D` / `Cmd+Shift+D`), copy-on-select, and 10M scrollback. This is opinionated and personal; the themes work independently without it.
+
+```bash
+cp config ~/.config/ghostty/config
+```
+
+### Shaders
+
+Optional GLSL post-processing effects (vignette, bloom):
+
+```bash
+# macOS
+cp shaders/*.glsl ~/Library/Application\ Support/com.mitchellh.ghostty/shaders/
+
+# Linux
+cp shaders/*.glsl ~/.config/ghostty/shaders/
+```
+
+Uncomment the `custom-shader` lines in your config to enable.
+
+## Color Mapping
+
+All colors map to [Delightful Design System](https://github.com/kylesnav/delightful-design-system) tokens. Blue slots use the cyan hue at different lightness levels since Delightful has no dedicated blue.
 
 <details>
 <summary><strong>Full token mapping</strong></summary>
@@ -84,53 +95,15 @@ All colors map to Delightful Design System tokens. Blue slots use the cyan hue a
 
 </details>
 
-## Full Experience
+## Part of Delightful
 
-The included config file goes beyond colors — fonts, keybinds, window chrome, and tmux integration. This is opinionated and personal.
+This theme is part of the [Delightful Design System](https://github.com/kylesnav/delightful-design-system) -- a warm, neo-brutalist design system built on OKLCH color science.
 
-### Install
+Other terminal ports:
 
-```bash
-cp config ~/.config/ghostty/config
-```
-
-### What's Included
-
-| Feature | Details |
-|---------|---------|
-| JetBrains Mono | 14px with OpenType features (cv02–cv04, cv11) |
-| macOS tab bar | `macos-titlebar-style = tabs` with server-side window decoration |
-| Equalized splits | `Cmd+D` / `Cmd+Shift+D` split right/down and auto-equalize all panes |
-| Copy on select | Selected text copies to clipboard automatically |
-| 10M scrollback | Generous scrollback buffer |
-
-### Shaders
-
-Optional GLSL post-processing effects (vignette, bloom):
-
-```bash
-# macOS
-cp shaders/*.glsl ~/Library/Application\ Support/com.mitchellh.ghostty/shaders/
-
-# Linux
-cp shaders/*.glsl ~/.config/ghostty/shaders/
-```
-
-Uncomment the `custom-shader` lines in your config to enable.
-
-### Claude Code
-
-After applying the theme, run `/config` in Claude Code and set the theme to **light-ansi** or **dark-ansi** (matching your terminal theme). Claude Code inherits the Delightful palette from your terminal.
-
-### tmux (optional)
-
-For persistent tmux sessions with a matching rainbow status bar, see the [`shell/`](../shell/) package. Add `command = /path/to/tmux-auto-attach` to your Ghostty config to enable.
-
-## Related
-
-- [`shell/`](../shell/) — tmux, zsh config, and terminal utilities
-- [`starship/`](../starship/) — Starship prompt theme
-- [`iterm2/`](../iterm2/) — iTerm2 color profiles using the same palette
+- [delightful-starship](https://github.com/kylesnav/delightful-starship) -- Starship prompt theme
+- [delightful-shell](https://github.com/kylesnav/delightful-shell) -- tmux, zsh config, and terminal utilities
+- [delightful-iterm2](https://github.com/kylesnav/delightful-iterm2) -- iTerm2 color profiles
 
 ## License
 

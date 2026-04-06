@@ -1,3 +1,11 @@
+# Delightful Ghostty Config
+# =========================
+# Opinionated terminal settings for the full Delightful experience.
+# This file configures fonts, window chrome, keybinds, and behavior —
+# the theme colors live separately in themes/delightful-light and themes/delightful-dark.
+#
+# Usage: cp config ~/.config/ghostty/config
+
 theme = delightful-light
 
 # --- Typography ---
