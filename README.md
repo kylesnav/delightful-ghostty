@@ -87,7 +87,7 @@ All colors map to [Delightful Design System](https://github.com/kylesnav/delight
 | Black | neutral-950 | `#16100c` | `#1e1a16` |
 | Red | red-400 | `#ed324b` | `#e8554c` |
 | Green | green-400 | `#22a448` | `#3aad5f` |
-| Yellow | gold-500 | `#c67e00` | `#f5c526` |
+| Yellow | gold-400 | `#febf00` | `#f5c526` |
 | Blue | cyan-400 | `#00a6c0` | `#00a6c0` |
 | Magenta | pink-400 | `#f600a3` | `#ff4fa8` |
 | Cyan | cyan-300 | `#17c0d6` | `#5cb8d6` |
